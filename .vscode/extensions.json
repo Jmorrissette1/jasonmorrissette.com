@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "ms-python.python",
+    "charliermarsh.ruff",
+    "EditorConfig.EditorConfig",
+    "samuelcolvin.jinjahtml",
+    "bradlc.vscode-tailwindcss",
+    "tamasfe.even-better-toml"
+  ]
+}

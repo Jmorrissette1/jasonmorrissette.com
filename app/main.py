@@ -4,9 +4,9 @@ from fastapi import FastAPI
 from fastapi.staticfiles import StaticFiles
 
 from app.config import Settings, get_settings
-from app.routes import health, pages 
 from app.errors import register_error_handlers
 from app.middleware.security_headers import SecurityHeadersMiddleware, build_security_headers
+from app.routes import health, pages
 from app.templating import STATIC_DIR
 
 
@@ -24,7 +24,7 @@ def create_app(settings: Settings | None = None) -> FastAPI:
         openapi_url=None,
     )
     app.state.settings = settings
-    
+
     app.add_middleware(SecurityHeadersMiddleware, headers=build_security_headers(settings))
     register_error_handlers(app)
     app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")

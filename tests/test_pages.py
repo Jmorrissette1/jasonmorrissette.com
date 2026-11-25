@@ -1,4 +1,5 @@
 """Page rendering, navigation and static-file safety."""
+
 import re
 
 from fastapi.testclient import TestClient

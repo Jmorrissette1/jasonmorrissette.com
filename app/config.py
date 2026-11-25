@@ -21,6 +21,7 @@ class Settings(BaseSettings):
     base_url: HttpUrl = HttpUrl("http://127.0.0.1:8000")
     # 0 = HSTS off. Enable only after HTTPS is verified in production.
     hsts_max_age: int = Field(default=0, ge=0)
+
     @model_validator(mode="after")
     def _require_https_in_production(self) -> Self:
         if self.environment == "production" and self.base_url.scheme != "https":
