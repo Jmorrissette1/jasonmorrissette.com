@@ -1,0 +1,5 @@
+# Prettier doesn't understand Jinja2 syntax and rewrites template logic.
+app/templates/
+# Generated output
+app/static/css/
+uv.lock

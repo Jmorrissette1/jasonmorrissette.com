@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/* Scan our Jinja templates for class names. */
+@source "../app/templates";
+
+@theme {
+  /* Brand palette (AEGIS handoff) */
+  --color-obsidian: #0d0f1a; /* page background */
+  --color-surface: #1f1b33; /* cards, secondary surfaces */
+  --color-crimson: #d81f26; /* primary accent: fills, large text, icons */
+  --color-crimson-muted: #b83234; /* secondary accent: decoration, hover fills */
+  --color-royal: #6a4699; /* decorative borders and highlights */
+  --color-ink: #efefef; /* primary text */
+
+  /* Accessible variants: WCAG AA on obsidian and surface */
+  --color-crimson-light: #ff6b70; /* links, small accent text */
+  --color-royal-light: #b39ddb; /* focus rings, meaningful borders */
+  --color-ink-muted: #a8a8b8; /* secondary text */
+
+  /* System fonts: no third-party font requests */
+  --font-sans:
+    ui-sans-serif, system-ui, "Segoe UI", Roboto, "Helvetica Neue", Arial,
+    sans-serif;
+  --font-mono:
+    ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+}
+
+@layer base {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-obsidian font-sans text-ink antialiased;
+  }
+  a {
+    @apply text-crimson-light underline underline-offset-4 hover:text-ink;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-royal-light);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center rounded-md bg-crimson px-5 py-3 font-semibold text-white no-underline hover:bg-crimson-muted;
+  }
+  .btn-secondary {
+    @apply inline-flex items-center rounded-md border border-royal-light px-5 py-3 font-semibold text-ink no-underline hover:bg-surface;
+  }
+}
+
+/* Subtle technical grid, per the brand direction */
+@utility bg-grid {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, var(--color-royal) 15%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, var(--color-royal) 15%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 48px 48px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

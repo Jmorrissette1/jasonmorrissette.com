@@ -1,0 +1,19 @@
+<header class="border-b border-royal/40 bg-obsidian/90">
+  <div class="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-4 px-6 py-4">
+    <a href="/" class="font-mono text-sm font-semibold tracking-widest text-ink no-underline">
+      JASON<span class="text-crimson">.</span>MORRISSETTE
+    </a>
+    <nav aria-label="Primary">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+        {% for label, href in nav_items %}
+          {% set is_current = request.url.path == href %}
+          <li>
+            <a href="{{ href }}"
+               class="no-underline {{ 'text-crimson-light' if is_current else 'text-ink-muted hover:text-ink' }}"
+               {% if is_current %}aria-current="page"{% endif %}>{{ label }}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

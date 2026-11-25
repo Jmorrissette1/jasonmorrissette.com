@@ -1,9 +1,11 @@
 """Application factory: builds and configures the FastAPI app."""
 
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
 
 from app.config import Settings, get_settings
-from app.routes import health
+from app.routes import health, pages
+from app.templating import STATIC_DIR
 
 
 def create_app(settings: Settings | None = None) -> FastAPI:
@@ -21,7 +23,9 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     )
     app.state.settings = settings
 
+    app.mount("/static", StaticFiles(directory=STATIC_DIR), name="static")
     app.include_router(health.router)
+    app.include_router(pages.router)
     return app
 
 

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Jason Morrissette | Cloud Security &amp; Identity{% endblock %}</title>
+  <meta name="description" content="{% block description %}Jason Morrissette: cloud security, identity and Zero Trust engineering.{% endblock %}">
+  <meta name="color-scheme" content="dark">
+  <link rel="stylesheet" href="{{ static_url('css/site.css') }}">
+</head>
+<body class="flex min-h-screen flex-col">
+  <a href="#main"
+     class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded focus:bg-surface focus:px-4 focus:py-2">
+    Skip to main content
+  </a>
+
+  {% include "partials/header.html" %}
+
+  <main id="main" class="flex-1">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "partials/footer.html" %}
+</body>
+</html>

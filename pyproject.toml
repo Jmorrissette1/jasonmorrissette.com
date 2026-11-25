@@ -5,6 +5,7 @@ description = "Personal portfolio and cloud security case study for jasonmorriss
 requires-python = ">=3.13,<3.14"
 dependencies = [
     "fastapi>=0.165.0",
+    "jinja2>=3.1.6",
     "pydantic-settings>=2.16.3",
     "uvicorn[standard]>=0.54.0",
 ]
