@@ -42,3 +42,10 @@ def test_static_path_traversal_is_blocked(client: TestClient) -> None:
     response = client.get("/static/%2e%2e/main.py")
     assert response.status_code == 404
     assert "create_app" not in response.text
+
+
+def test_home_supports_head(client: TestClient) -> None:
+    # Uptime monitors and link checkers often send HEAD instead of GET.
+    response = client.head("/")
+    assert response.status_code == 200
+    assert response.text == ""

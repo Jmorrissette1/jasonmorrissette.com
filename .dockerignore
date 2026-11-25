@@ -1,0 +1,15 @@
+# Keep the build context small and free of secrets.
+.git
+.github
+.venv
+.vscode
+.env
+.env.*
+bin/
+docs/
+tests/
+**/__pycache__
+.pytest_cache
+.ruff_cache
+app/static/css/site.css
+*.md
