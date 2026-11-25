@@ -81,6 +81,8 @@ jobs:
     permissions:
       contents: read
       packages: write # push to GHCR; only this job gets it
+    env:
+      IMAGE: ghcr.io/jmorrissette1/jasonmorrissette.com # must be lowercase
     steps:
       - name: Check out code
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
@@ -104,8 +106,8 @@ jobs:
           context: .
           push: ${{ github.event_name == 'push' }}
           tags: |
-            ghcr.io/${{ github.repository }}:sha-${{ github.sha }}
-            ghcr.io/${{ github.repository }}:main
+            ${{ env.IMAGE }}:sha-${{ github.sha }}
+            ${{ env.IMAGE }}:main
           provenance: mode=max
           sbom: true
           cache-from: type=gha
