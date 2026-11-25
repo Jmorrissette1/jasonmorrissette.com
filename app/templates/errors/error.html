@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block title %}Something went wrong | Jason Morrissette{% endblock %}
+
+{% block content %}
+<section class="mx-auto max-w-6xl px-6 py-24">
+  <p class="font-mono text-sm uppercase tracking-widest text-crimson-light">Error {{ status_code }}</p>
+  <h1 class="mt-4 text-4xl font-bold tracking-tight">Something went wrong</h1>
+  <p class="mt-6 max-w-2xl text-lg text-ink-muted">
+    The request couldn't be completed. Please try again later.
+  </p>
+  <p class="mt-10"><a href="/" class="btn-primary">Back to home</a></p>
+</section>
+{% endblock %}

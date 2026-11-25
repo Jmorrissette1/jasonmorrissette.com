@@ -3,7 +3,7 @@
 from functools import lru_cache
 from typing import Literal, Self
 
-from pydantic import HttpUrl, model_validator
+from pydantic import Field, HttpUrl, model_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -19,7 +19,8 @@ class Settings(BaseSettings):
 
     environment: Literal["development", "production"] = "development"
     base_url: HttpUrl = HttpUrl("http://127.0.0.1:8000")
-
+    # 0 = HSTS off. Enable only after HTTPS is verified in production.
+    hsts_max_age: int = Field(default=0, ge=0)
     @model_validator(mode="after")
     def _require_https_in_production(self) -> Self:
         if self.environment == "production" and self.base_url.scheme != "https":
